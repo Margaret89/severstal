@@ -1,8 +1,15 @@
+:root {
+	--color-text: #5b5c71;
+	--color-primary: #086dfe;
+	--color-primary-hover: #4b60a6;
+	--color-error: #ff0000;
+}
+
 html,
 body{
 	background: #fff;
 	font-family: $font-site;
-	@include font(normal, normal, 10px, 1.6, $color-text);
+	@include font(normal, normal, 10px, 1.5, var(--color-text));
 	box-sizing:border-box;
 }
 
@@ -18,16 +25,15 @@ body{font-size: 1.6rem;}
 
 img{max-width: 100%;}
 
-a{
-	color: $color-text;
-}
-
-a:hover{text-decoration: none;}
+a{color: var(--color-primary);}
+a:hover{text-decoration: underline;}
 
 p{
 	padding: 0;
 	margin-bottom: 2rem;
 }
+
+ul, ol{margin-bottom: 2rem;}
 
 h1,.h1,
 h2,.h2,
@@ -36,33 +42,31 @@ h4,.h4,
 h5,.h5
 {
 	line-height: 1.4;
-	color: $color-text;
+	color: var(--color-text);
 }
 
 h1,.h1{
-	font-size: 4rem;
+	font-size: 4.6rem;
+	line-height: 1.3;
 	margin-bottom: 4rem;
 }
 
 h2,.h2{
-	font-size: 3.2rem;
+	font-size: 2.4rem;
+	font-weight: bold;
 	margin-bottom: 2rem;
 }
 
 h3,.h3{
-	font-size: 2.4rem;
-	text-transform: uppercase;
-	margin-bottom: 1rem;
-}
-
-h4,.h4{
-	font-size: 2rem;
-	margin-bottom: 1rem;
-}
-
-h5,.h5{
 	font-size: 1.8rem;
-	margin-bottom: 1rem;
+	font-weight: bold;
+	margin-bottom: 2rem;
+}
+
+h4,.h4,h5,.h5,h6,.h6{
+	font-size: 1.6rem;
+	font-weight: bold;
+	margin-bottom: 2rem;
 }
 
 .wrapper{
@@ -75,52 +79,68 @@ h5,.h5{
 
 main{
 	flex: 1 1 auto;
-	padding-bottom: 76px;
+	padding-bottom: 120px;
 	width: 100%;
 }
 
-.st-width{
-	width: 960px;
-	margin-left: auto;
-	margin-right: auto;
+.last-elem{margin-bottom: -120px;}
+
+.m-indent{
+	margin-top: 120px;
+	margin-bottom: 120px;
 }
+
+.mt-indent{margin-top: 120px;}
+.mb-indent{margin-bottom: 120px;}
+
+.p-indent{
+	padding-top: 120px;
+	padding-bottom: 120px;
+}
+
+.pt-indent{padding-top: 120px;}
+.pb-indent{padding-bottom: 120px;}
 
 .btn,
 input[type="submit"].btn,
 button.btn{
-	display: inline-block;
-	height: 6rem;
-	min-width: 200px;
-	background: $color-text;
-	border: 1px solid $color-text;
-	@include font(normal, 500, 1.3rem, 5.8rem, #fff);
-	text-transform: uppercase;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	height: 5.4rem;
+	border-radius: 2.7rem;
+	border: 1px solid var(--color-primary);
+	background: var(--color-primary);
+	@include font(none, none, 1.8rem, 1.3, #fff);
 	text-decoration: none;
 	text-align: center;
-	padding: 0 30px;
+	padding: 0 32px;
 	cursor: pointer;
+	position: relative;
+	z-index: 1;
 	transition: all 0.2s ease 0s;
-}
 
-.btn:hover,
-input[type="submit"].btn:hover,
-button.btn:hover{
-	background: transparent;
-	color: $color-text;
-}
+	.icon{
+		flex-shrink: 0;
+		fill: #fff;
+		transition: fill 0.2s ease 0s;
+	}
 
-.btn_border,
-input[type="submit"].btn_border,
-button.btn_border{
-	background: transparent;
-	color: $color-text;
-}
+	&:hover{
+		color: #fff;
+		border-color: var(--color-primary-hover);
+		box-shadow: inset 0 -5.4em 0 0 var(--color-primary-hover);
+		text-decoration: none;
 
-.btn_border:hover,
-input[type="submit"].btn_border:hover,
-button.btn_border:hover{
-	background: $color-text;
-	color: #fff;
+		.icon{fill: #fff;}
+	}
+
+	&_border{
+		color: var(--color-primary);
+		background: transparent;
+		.icon{fill: var(--color-primary);}
+	}
 }
 
 .code{
