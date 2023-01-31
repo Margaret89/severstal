@@ -1,4 +1,91 @@
 header.header
 	.container
 		.row
-			.col-12 header
+			.col-12
+				.header__content
+					.header__logo
+						a(href="/")
+							img(src="assets/img/logo.svg", alt="")
+
+					.header__top
+						.header-contact.d-none.d-md-inline-flex
+							.header-contact__icon
+								+svg('ic-call','ic-call', '20', '20')
+								
+							.header-contact__content
+								.header-contact__text
+									a.header-contact__phone(href="tel:+79116812208") 8 (911) 681-22-08
+
+						.header-contact.d-none.d-md-inline-flex
+							.header-contact__icon
+								+svg('ic-address','ic-address', '16', '20')
+
+							.header-contact__content
+								.header-contact__text 164522, Архангельская обл., г. Северодвинск, ул. Трухинова, д.6а, пом.3-Н
+
+						.header-contact.d-none.d-md-inline-flex
+							.header-contact__icon
+								+svg('ic-mail','ic-mail', '21', '16')
+
+							.header-contact__content
+								.header-contact__text
+									a.header-contact__mail(href="mailto:severtrust@finance.com") severtrust@finance.com
+
+					//- .header-mob-contact-wrap.d-md-none
+					//- 	.header-mob-contact.js-header-mob-contact
+					//- 		.header-mob-contact__btn.js-header-mob-contact-btn
+					//- 			+svg('ic-call','ic-call', '20', '20')
+
+					//- 		.header-mob-contact__popup.js-header-mob-contact-popup
+					//- 			.container
+					//- 				.row
+					//- 					.col-12
+					//- 						.header-mob-contact__close.js-header-mob-contact-close
+					//- 							+svg('ic-close','ic-close', '12', '12')
+
+					//- 						.header-contact
+					//- 							.header-contact__icon
+					//- 								+svg('ic-call','ic-call', '20', '20')
+													
+					//- 							.header-contact__content
+					//- 								.header-contact__text
+					//- 									a.header-contact__phone(href="tel:+79115012741") +7 (911) 501-27-41
+
+					//- 	.header-mob-contact.js-header-mob-contact
+					//- 		.header-mob-contact__btn.js-header-mob-contact-btn
+					//- 			+svg('ic-address','ic-address', '19', '23')
+
+					//- 		.header-mob-contact__popup.js-header-mob-contact-popup
+					//- 			.container
+					//- 				.row
+					//- 					.col-12
+					//- 						.header-mob-contact__close.js-header-mob-contact-close
+					//- 							+svg('ic-close','ic-close', '12', '12')
+
+					//- 						.header-contact
+					//- 							.header-contact__icon
+					//- 								+svg('ic-address','ic-address', '19', '23')
+
+					//- 							.header-contact__content
+					//- 								.header-contact__text 164522, Архангельская область, г.&nbsp;Северодвинск, ул.&nbsp;Трухинова, д.&nbsp;6А, пом.&nbsp;3-Н
+
+					//- 	span.ic-hamburger.js-btn-menu.d-sm-none
+					//- 		span
+
+					nav.main-menu-wrap.js-main-menu-wrap
+						ul.main-menu
+							-
+								var list=[
+									{text:'Акции', status:'active'},
+									{text:'Продукты'},
+									{text:'FAQ'},
+									{text:'Отделения'},
+									{text:'Документы'},
+									{text:'Реквизиты'},
+									{text:'О компании'},
+									{text:'Контакты'},
+								]
+
+							each item in list
+								li.main-menu__item(class=item.status=='active'?'active':'')
+									a(href="#").main-menu__link= item.text

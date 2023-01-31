@@ -1,7 +1,7 @@
 :root {
 	--color-text: #5b5c71;
 	--color-primary: #086dfe;
-	--color-primary-hover: #4b60a6;
+	--color-primary-dark: #4b60a6;
 	--color-error: #ff0000;
 }
 
@@ -129,8 +129,8 @@ button.btn{
 
 	&:hover{
 		color: #fff;
-		border-color: var(--color-primary-hover);
-		box-shadow: inset 0 -5.4em 0 0 var(--color-primary-hover);
+		border-color: var(--color-primary-dark);
+		box-shadow: inset 0 -5.4em 0 0 var(--color-primary-dark);
 		text-decoration: none;
 
 		.icon{fill: #fff;}

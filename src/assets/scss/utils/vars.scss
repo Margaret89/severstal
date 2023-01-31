@@ -6,20 +6,23 @@ $path-fonts: "../fonts";
 $font-site: 'Montserrat', Arial, sans-serif;
 
 // Grid
-// $grid-breakpoints: (
-//   xs: 0,
-//   sm: 576px,
-//   md: 768px,
-//   lg: 992px,
-//   xl: 1200px
-// ) !default;
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1240px,
+	xxl: 1640px
+) !default;
 
-// $container-max-widths: (
-//   sm: 540px,
-//   md: 720px,
-//   lg: 960px,
-//   xl: 1140px
-// ) !default;
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1200px,
+	xxl: 1576px
+) !default;
 
+$grid-gutter-width: 30px !default;
 
 // $grid-columns: 16;
