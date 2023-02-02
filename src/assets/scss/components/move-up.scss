@@ -1,0 +1,40 @@
+/*-------------- move-up -----------------*/
+.move-up{
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+	background: var(--color-primary);
+	padding: 5px;
+	text-align: center;
+	position: fixed;
+	right: -100px;
+	bottom: 50px;
+	cursor: pointer;
+	opacity: 0;
+	transition: all 0.2s ease 0s;
+
+	.icon{fill: #fff;}
+
+	&__text{
+		@include font(normal, 500, 1rem, 1, #fff);
+		text-transform: uppercase;
+		margin-top: 5px;
+	}
+
+	&:hover{background: var(--color-primary-dark);}
+
+	&.visible{
+		right: 50px;
+		opacity: 1;
+	}
+}
+
+@media (max-width: 767px) {
+	.move-up{
+		bottom: 20px;
+		&.visible{right: 20px;}
+	}
+}

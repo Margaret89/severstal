@@ -1,0 +1,93 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Главная';
+
+block content
+	section.top-block
+		.container.container_indent
+			.row
+				.col-4
+					.top-block__main
+						.top-block__info.d-none.d-md-block
+							.top-block__title Займы онлайн в&nbsp;Северодвинске
+							.top-block__text Деньги без справок и поручителей без залога и переплат
+
+						form.form-calc
+							input.form-range(type='range', min='0', max='500')
+
+							.form-calc__fields
+								.form-calc__item
+									.range.js-range
+										.range__top
+											span.range__title Сумма займа: 
+											span.range__val <span class="js-range-val" data-text="руб."></span>
+										input(type='text' name='prices' data-provide='slider' data-slider-min='1000' data-slider-max='30000' data-slider-step='1' data-slider-value='5000' data-slider-tooltip="hide" class="js-range-input")
+
+										.range__scale
+											.range__min.js-range-min
+											.range__max.js-range-max
+
+								.form-calc__item
+									.range.js-range(data-note='true')
+										.range__top
+											span.range__title Срок займа: 
+											span.range__val <span class="js-range-val" data-text="день"></span>
+										input(type='text' name='days' data-provide='slider' data-slider-min='10' data-slider-max='32' data-slider-step='1' data-slider-value='25' data-slider-tooltip="hide" class="js-range-input" )
+
+										.range__scale
+											.range__min.js-range-min
+											.range__max.js-range-max
+
+							.form-calc-res
+								.form-calc-res__content
+									.form-calc-res__label Всего к&nbsp;возврату
+									.form-calc-res__price 5170
+										span.form-calc-res__currency руб
+
+								.form-calc-res__btn
+									input.btn(type="submit", value="Продолжить")
+
+				.col-7.offset-1
+					.contact
+						.map-wrap.js-map-wrap
+							.map-panel.d-md-none
+								.map-panel__content
+									.map-panel__icon
+										img(src="assets/img/icon-map.svg", alt="")
+									.map-panel__text Смотреть на карте
+								.map-panel__arr.js-map-panel-arr
+									+svg('ic-arrow-down','ic-arrow-down', '14', '8')
+
+							.map-wrap__content.js-map-wrap-content
+								#map.map
+							script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU' type='text/javascript')
+					
+						.contact-list.d-none.d-md-block
+							.contact-list__item
+								.contact-list__icon
+									+svg('ic-address','ic-address', '30', '37')
+								.contact-list__content
+									.contact-list__label Главный офис:
+									.contact-list__text 164522, Архангельская область, г. Северодвинск, ул. Трухинова, д. 6А, пом. 3-Н
+							
+							.contact-list__item
+								.contact-list__icon
+									+svg('ic-path','ic-path', '38', '33')
+								.contact-list__content
+									.contact-list__label Как добраться:
+									.contact-list__text
+										.contact-path
+											span.contact-path__icon
+												+svg('ic-bus','ic-bus', '18', '18')
+											span.contact-path__text Бульвар Строителей
+											span.contact-path__distance
+												+svg('ic-person','ic-person', '8', '14')
+												|180 м
+
+											span.contact-path__num 4
+
+
+					.top-block__info.d-md-none
+						.top-block__title Займы в&nbsp;Северодвинске
+	

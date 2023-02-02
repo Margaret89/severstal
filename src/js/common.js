@@ -5,4 +5,6 @@ import $ from 'jquery';
 // import 'slick-slider/slick/slick.min.js';
 // import Inputmask from "inputmask";
 
+// var Slider = require("bootstrap-slider");
+
 export {$};
