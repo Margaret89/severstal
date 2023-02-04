@@ -1,0 +1,104 @@
+/*-------------- map -----------------*/
+.map{
+	width: 100%;
+	height: 555px;
+}
+
+.map-wrap{
+	border: 20px solid rgba(255, 255, 255, 0.3);
+	border-radius: 20px;
+	box-shadow: 0px 4px 4px rgba(8, 39, 131, 0.25);
+	position: relative;
+
+	&::before{
+		content: '';
+		width: 145px;
+		height: 144px;
+		background: url(../img/coin.png) no-repeat center;
+		background-size: contain;
+		position: absolute;
+		top: 17px;
+		left: -90px;
+		z-index: 2;
+	}
+
+	&::after{
+		content: '';
+		width: 119px;
+		height: 134px;
+		background: url(../img/coin2.png) no-repeat center;
+		background-size: contain;
+		position: absolute;
+		bottom: 60px;
+		right: -78px;
+		z-index: 2;
+	}
+}
+
+
+// .map-panel{
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: space-between;
+// 	background: #fff;
+// 	padding: 15px 17px;
+
+// 	&__content{
+// 		display: flex;
+// 		align-items: center;
+// 		padding-right: 10px;
+// 	}
+
+// 	&__icon{
+// 		flex: 0 0 25px;
+// 		margin-right: 10px;
+// 	}
+
+// 	&__text{
+// 		@include font(normal, bold, 1.4rem, 1.2, $color-text);
+// 		text-transform: uppercase;
+// 	}
+
+// 	&__arr{
+// 		display: inline-flex;
+// 		align-items: center;
+// 		justify-content: center;
+// 		width: 30px;
+// 		height: 30px;
+// 		border-radius: 50%;
+// 		border: 2px solid $color-blue;
+// 		transition: fill 0.2s ease 0s;
+// 		cursor: pointer;
+
+// 		.icon{
+// 			fill: $color-blue;
+// 			transition: all 0.2s ease 0s;
+// 		}
+// 	}
+
+// 	&__arr:hover{border-color: #225da0;}
+// 	&__arr:hover .icon{fill: #225da0;}
+// 	&__arr.active .icon{transform: rotate(180deg);}
+// }
+
+// @media (max-width: 1239px) {
+// 	.map{height: 550px;}
+// }
+
+// @media (min-width: 992px) {
+// 	.map-wrap{
+// 		&__content{display: block!important;}
+// 	}
+// }
+
+// @media (max-width: 991px) {
+// 	.map{height: 400px;}
+
+// 	.map-wrap{
+// 		&__content{display: none;}
+// 	}
+// }
+
+// @media (max-width: 767px) {
+// 	.map{height: 284px;}
+// }

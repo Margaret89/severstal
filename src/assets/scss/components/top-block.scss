@@ -1,16 +1,10 @@
 /*-------------- top-block -----------------*/
 .top-block{
 	background: url(../img/bg-top-block.jpg) no-repeat center top;
-	padding: 95px 0 70px;
+	background-size: cover;
+	padding: 75px 0 70px;
 
-	// .contact{
-	// 	display: flex;
-	// 	flex-direction: column;
-	// 	justify-content: flex-end;
-	// 	width: 54%;
-	// }
-
-	// &__main{margin-top: -23px;}
+	&__info{padding-top: 30px;}
 
 	&__title{
 		@include font(none, bold, 4.6rem, 1.5, var(--color-dark));
@@ -20,7 +14,7 @@
 
 	&__text{
 		@include font(none, none, 2.6rem, 1.5, var(--color-dark));
-		margin-bottom: 4.2rem;
+		margin-bottom: 4rem;
 	}
 
 	.form-calc{margin-top: 4rem;}

@@ -14,36 +14,39 @@ block content
 							.top-block__text Деньги без справок и поручителей без залога и переплат
 
 						form.form-calc
-							input.form-range(type='range', min='0', max='500')
-
 							.form-calc__fields
 								.form-calc__item
 									.range.js-range
-										.range__top
-											span.range__title Сумма займа: 
-											span.range__val <span class="js-range-val" data-text="руб."></span>
-										input(type='text' name='prices' data-provide='slider' data-slider-min='1000' data-slider-max='30000' data-slider-step='1' data-slider-value='5000' data-slider-tooltip="hide" class="js-range-input")
+										.range__title Сумма кредита
+
+										.range__field
+											input.js-slider-range-min#slider-range-sum-credit-val(type="text", placeholder="1000")
+											.range__currency &#8381;
+
+										#slider-range-sum-credit.js-slider-range(data-min="500000", data-max="20000000", data-cur-min="2486000", data-step="1", autocomplete="off")
 
 										.range__scale
-											.range__min.js-range-min
-											.range__max.js-range-max
+											.range__min.js-range-min(data-label="&#8381;")
+											.range__max.js-range-max(data-label="&#8381;")
 
 								.form-calc__item
-									.range.js-range(data-note='true')
-										.range__top
-											span.range__title Срок займа: 
-											span.range__val <span class="js-range-val" data-text="день"></span>
-										input(type='text' name='days' data-provide='slider' data-slider-min='10' data-slider-max='32' data-slider-step='1' data-slider-value='25' data-slider-tooltip="hide" class="js-range-input" )
+									.range.js-range
+										.range__title Срок кредита
+
+										.range__field
+											input.js-slider-range-min#slider-range-time-credit-val(type="text", placeholder="1")
+											.range__currency Мес.
+
+										#slider-range-time-credit.js-slider-range(data-min="1", data-max="7", data-cur-min="2", data-step="1", autocomplete="off")
 
 										.range__scale
-											.range__min.js-range-min
-											.range__max.js-range-max
+											.range__min.js-range-min(data-label="год")
+											.range__max.js-range-max(data-label="год")
 
 							.form-calc-res
 								.form-calc-res__content
 									.form-calc-res__label Всего к&nbsp;возврату
-									.form-calc-res__price 5170
-										span.form-calc-res__currency руб
+									.form-calc-res__price 5 170 &#8381;
 
 								.form-calc-res__btn
 									input.btn(type="submit", value="Продолжить")
@@ -51,43 +54,38 @@ block content
 				.col-7.offset-1
 					.contact
 						.map-wrap.js-map-wrap
-							.map-panel.d-md-none
-								.map-panel__content
-									.map-panel__icon
-										img(src="assets/img/icon-map.svg", alt="")
-									.map-panel__text Смотреть на карте
-								.map-panel__arr.js-map-panel-arr
-									+svg('ic-arrow-down','ic-arrow-down', '14', '8')
-
 							.map-wrap__content.js-map-wrap-content
 								#map.map
 							script(src='http://api-maps.yandex.ru/2.1/?lang=ru_RU' type='text/javascript')
 					
-						.contact-list.d-none.d-md-block
+						.contact-list
 							.contact-list__item
 								.contact-list__icon
-									+svg('ic-address','ic-address', '30', '37')
+									+svg('ic-address','ic-address', '16', '20')
 								.contact-list__content
 									.contact-list__label Главный офис:
-									.contact-list__text 164522, Архангельская область, г. Северодвинск, ул. Трухинова, д. 6А, пом. 3-Н
+									.contact-list__text 164500 Архангельская область, г. Северодвинск, ул. ул. Карла Маркса, 30.
 							
 							.contact-list__item
 								.contact-list__icon
-									+svg('ic-path','ic-path', '38', '33')
+									+svg('ic-arrow-circle','ic-arrow-circle', '19', '20')
 								.contact-list__content
-									.contact-list__label Как добраться:
+									.contact-list__top
+										.contact-list__label Как добраться:
+
+										.switch.js-switch
+											.switch__text.js-switch-text-left Пешком
+
+											label.switch__label
+												input.js-choose-path(type="checkbox")
+												.switch__content
+													.switch__marker
+
+											.switch__text.js-switch-text-right На машине
+
+
 									.contact-list__text
-										.contact-path
-											span.contact-path__icon
-												+svg('ic-bus','ic-bus', '18', '18')
-											span.contact-path__text Бульвар Строителей
-											span.contact-path__distance
-												+svg('ic-person','ic-person', '8', '14')
-												|180 м
-
-											span.contact-path__num 4
+										.contact-list__path.js-path-foot Пешком, от остановки Карла маркса ,300 метров во двор. вход через арку
+										.contact-list__path.js-path-car(style="display: none;") На машине
 
 
-					.top-block__info.d-md-none
-						.top-block__title Займы в&nbsp;Северодвинске
-	

@@ -6,5 +6,6 @@ import $ from 'jquery';
 // import Inputmask from "inputmask";
 
 // var Slider = require("bootstrap-slider");
+import noUiSlider from 'nouislider';
 
-export {$};
+export {$, noUiSlider};

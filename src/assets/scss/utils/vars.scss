@@ -20,9 +20,7 @@ $container-max-widths: (
 	md: 720px,
 	lg: 960px,
 	xl: 1200px,
-	xxl: 1576px
+	xxl: 1584px
 ) !default;
 
-$grid-gutter-width: 30px !default;
-
-// $grid-columns: 16;
+$grid-gutter-width: 32px !default;

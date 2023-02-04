@@ -1,4 +1,5 @@
-import {$} from './common';
+import { each } from 'jquery';
+import {$, noUiSlider} from './common';
 
 var widthWindow = $(window).width();
 
@@ -12,55 +13,163 @@ $(window).on('scroll', function(){
 });
 $('.js-move-up').on('click', function(){$('body,html').animate({scrollTop:0},500);return false;});
 
-// //range slider
-// if($('.js-range-input').length){
-// 	$('.js-range-input').each(function(){
-// 		var $parent = $(this).parents('.js-range');
-// 		var $rangeVal = $parent.find('.js-range-val');
-// 		var numMin = $(this).data('slider-min').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-// 		var numMax = $(this).data('slider-max').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+// range-slider
+if($('.js-slider-range').length){
+	$('.js-slider-range').each(function(indx, element){
+		var slider = document.getElementById($(element).attr('id'));//Слайдер
+		var minRange = parseInt(slider.getAttribute('data-min'));//Минимальное значение
+		var maxRange = parseInt(slider.getAttribute('data-max'));//Максимальное значение
+		var start =  parseInt(slider.getAttribute('data-cur-min'));//Текущее значение
+		var step =  parseInt(slider.getAttribute('data-step'));//Шаг
+		var idMinElem = $(element).closest('.js-range').find('.js-slider-range-min').attr('id');//Поле, в которое выводим результат
 
-// 		if($rangeVal.data('text') == 'день'){
-// 			$rangeVal.html('<span class="range__val-num">' + $(this).data('slider-value') + '</span> ' + nameDay($(this).data('slider-value')));
+		var $parent = $(this).parents('.js-range');//Обертка текущего слайдера
+		var numMin = minRange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");//Минимальное значение по разрядам
+		var numMax = maxRange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");//Максимальное значение по разрядам
+		var numMinLabel = $parent.find('.js-range-min').data('label');// Подписи для минимального значения
+		var numMaxLabel = $parent.find('.js-range-max').data('label');// Подписи для максимального значения
 
-// 			if($parent.data('note') == true){
-// 				numMin = numMin + ' ' + nameDay($(this).data('slider-min'));
-// 				numMax = numMax + ' ' + nameDay($(this).data('slider-max'));
-// 			}
-// 		}else{
-// 			$rangeVal.html('<span class="range__val-num">' + $(this).data('slider-value') + '</span> ' + $rangeVal.data('text'));
+		//Выводим минимальное и максимальное значение снизу слайдера
+		if(numMinLabel == 'год'){
+			if(minRange == 1){
+				numMinLabel = 'года';
+			}else{
+				numMinLabel = 'лет';
+			}
+		}
 
-// 			if($parent.data('note') == true){
-// 				numMin = numMin + ' ' + $rangeVal.data('text');
-// 				numMax = numMax + ' ' + $rangeVal.data('text');
-// 			}
-// 		}
+		if(numMaxLabel == 'год'){
+			if(maxRange == 1){
+				numMaxLabel = 'года';
+			}else{
+				numMaxLabel = 'лет';
+			}
+		}
 
-// 		$parent.find('.js-range-min').text(numMin)
-// 		$parent.find('.js-range-max').text(numMax)
-// 	});
+		$parent.find('.js-range-min').html('от ' + numMin + ' ' + numMinLabel);
+		$parent.find('.js-range-max').html('от ' + numMax + ' ' + numMaxLabel);
+
+		//Инициализация слайдера
+		var formatForSlider = {
+			from: function (formattedValue) {
+				formattedValue = formattedValue.replace(/[^0-9]/g, '');
+				return Number(formattedValue);
+			},
+			to: function(numericValue) {//Вывод числа с разрядностью
+				numericValue = String(Math.round(numericValue));
+				numericValue = numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+				return numericValue;
+			}
+		};
+		
+		noUiSlider.create(slider, {
+			start: start,
+			connect: 'lower',
+			step: step,
+			range: {
+				'min': minRange,
+				'max': maxRange
+			},
+			format: formatForSlider,
+		});
+
+		var snapValues = [
+			document.getElementById(idMinElem),
+		];
+
+		var initRange = false;
+
+		slider.noUiSlider.on('update', function (values, handle) {
+			snapValues[handle].value = values[handle];
+
+			if(initRange == false){
+				if(handle == 1){
+					initRange = true;
+				}
+			}else{
+				$('.js-slider-range-min').trigger("change");
+			}
+		});
+
+		snapValues.forEach(function (input, handle) {
+			input.addEventListener('change', function () {
+				var valItem = this.value;
+
+				if(handle == 0){
+					if((valItem < minRange) || (valItem > maxRange)){
+						valItem = minRange;
+					}
+				}
+				slider.noUiSlider.setHandle(handle, valItem);
+			});
+		});
+	});
+
+	// Проверка полей на ввод цифор
+	function digits_int(target){
+		let inVal = $(target).val().replace(/[^0-9]/g, '');
+		inVal = inVal.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+		$(target).val(inVal);
+	}
+
+	$('.js-slider-range-min').on('change keyup input click', function(e){
+		digits_int(this);
+	});
+}
+
+// Yandex карта
+if ($('#map').length) {
+	// Иницилизация карты
+	ymaps.ready(init);
+
+	function init(){
+		var myMap;
+		myMap = new ymaps.Map("map", {
+			center: [57.469, 79.040],
+			zoom: 3.2,
+			controls: []
+		});
+
+		//Задаем метки
+		placemark('55.778398', '37.699664', 'ул. Большая Почтовая, 26в, стр. 2, Москва, Россия, 105082');
+		placemark('56.821694', '60.572448', 'Ул. Посадская 28А, оф. 406. ТЦ Универбыт, Екатеринбург, Свердловская обл., 620102');
+		placemark('58.003439', '56.236021', 'ул. Революции, 60/1, Пермь, Пермский край, 614000');
+
+		function placemark(lat, long, text) {
+			var myPlacemark = new ymaps.Placemark([lat, long] , 
+				{
+					balloonContentBody: text,
+					hintContent: text
+				},
+				{
+					iconLayout: 'default#image',
+					iconImageHref: '/assets/img/mark-map.png',
+					iconImageSize: [26, 33],
+					iconImageOffset: [-13, -17],
+				});
 	
+			myMap.geoObjects.add(myPlacemark);
+		}
+	}
+}
 
-// 	$('.js-range-input').on("slide", function(e) {
-// 		var $rangeVal = $(this).parents('.js-range').find('.js-range-val');
+//Выбор просмотра пути
+if($('.js-choose-path').length){
+	$('.js-choose-path').each(function(indx, element){
+		if ($(this).is(":checked")) {
+			$(this).closest('.js-switch').find('.js-switch-text-right').addClass('active')
+		} else {
+			$(this).closest('.js-switch').find('.js-switch-text-left').addClass('active')
+		}
+	});
 
-// 		if($rangeVal.data('text') == 'день'){
-// 			$rangeVal.html('<span class="range__val-num">'+ e.value + '</span> ' + nameDay(e.value));
-// 		}else{
-// 			$rangeVal.html('<span class="range__val-num">'+ e.value + '</span> ' + $rangeVal.data('text'));
-// 		}
-// 	});
-
-// 	function nameDay(val) {
-// 		var lastFigure = parseInt(val.toString().substr(val.toString().length - 1, 1));
-
-// 		if (val >= 11 && val < 15) {
-// 			return 'дней';
-// 		}
-// 		else {
-// 			if (lastFigure == 1) return 'день';
-// 			if (lastFigure > 1 && lastFigure < 5) return 'дня';
-// 			if (lastFigure == 0 || lastFigure >= 5) return 'дней';
-// 		}
-// 	}
-// }
+	$('.js-choose-path').on('change', function(){
+		if ($(this).is(":checked")) {
+			$(this).closest('.js-switch').find('.js-switch-text-left').removeClass('active')
+			$(this).closest('.js-switch').find('.js-switch-text-right').addClass('active')
+		} else {
+			$(this).closest('.js-switch').find('.js-switch-text-right').removeClass('active')
+			$(this).closest('.js-switch').find('.js-switch-text-left').addClass('active')
+		}
+	});
+}
