@@ -173,3 +173,18 @@ if($('.js-choose-path').length){
 		}
 	});
 }
+
+// unwrap block
+if($('.js-unwrap-block').length){
+	$('.js-unwrap-head').on('click',function(event){
+		event.preventDefault();
+		var $parent = $(this).parents('.js-unwrap-block');
+		
+		$parent.toggleClass('opened');
+		if($parent.hasClass('opened')){
+			$parent.children('.js-unwrap-content').slideDown(300);
+		}else{
+			$parent.children('.js-unwrap-content').slideUp(300);
+		}
+	});
+}

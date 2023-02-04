@@ -1,0 +1,83 @@
+/*-------------- reviews -----------------*/
+.review-wrap{
+	background: linear-gradient(226.29deg, rgba(119, 239, 110, 0.2) 2.63%, rgba(180, 247, 89, 0.2) 2.64%, rgba(112, 231, 119, 0.2) 13.47%, rgba(53, 213, 165, 0.2) 37.37%, rgba(0, 199, 197, 0.2) 50.78%, rgba(45, 155, 224, 0.2) 69.2%, rgba(82, 119, 247, 0.2) 86%, rgba(91, 117, 246, 0.2) 95.19%, rgba(59, 115, 181, 0.2) 110.06%, rgba(76, 95, 165, 0.2) 118.29%), #EFF4FF;
+	position: relative;
+	overflow: hidden;
+
+	&::before{
+		content: '';
+		display: block;
+		width: 430px;
+		height: 430px;
+		background: linear-gradient(29.96deg, #77EF6E -10.37%, #B4F759 -10.36%, #70E777 4.82%, #35D5A5 38.32%, #00C7C5 57.12%, #2D9BE0 82.93%, #5277F7 106.49%, #5B75F6 119.37%, #3B73B5 140.21%, #4C5FA5 151.74%), #D9D9D9;
+		opacity: 0.4;
+		border-radius: 50%;
+		position: absolute;
+		bottom: -100px;
+		left: -100px;
+	}
+
+	&::after{
+		content: '';
+		display: block;
+		width: 155px;
+		height: 155px;
+		background: linear-gradient(29.96deg, #77EF6E -10.37%, #B4F759 -10.36%, #70E777 4.82%, #35D5A5 38.32%, #00C7C5 57.12%, #2D9BE0 82.93%, #5277F7 106.49%, #5B75F6 119.37%, #3B73B5 140.21%, #4C5FA5 151.74%), #D9D9D9;
+		opacity: 0.4;
+		filter: blur(7.5px);
+		border-radius: 50%;
+		position: absolute;
+		top: 80px;
+		right: 30px;
+	}
+}
+
+.review-list{position: relative;}
+
+.review-item{
+	background: rgba(255, 255, 255, 0.8);
+	border: 1px solid #fff;
+	box-shadow: 0px 4px 20px rgba(8, 39, 131, 0.15);
+	border-radius: 10px;
+	padding: 40px 38px;
+
+	&__top{
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		margin-bottom: 17px;
+	}
+
+	&__img{
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		border: 4px solid #fff;
+		border-radius: 50%;
+		box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.3);
+	}
+
+	&__name{
+		max-width: 250px;
+		@include font(none, bold, 1.6rem, 1.5, var(--color-dark));
+	}
+
+	&__content{
+		&::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+	}
+
+	&__sign{
+		float: left;
+		margin: 5px 14px 10px 0;
+	}
+
+	&__text{
+		@include font(none, none, 1.4rem, 1.7, var(--color-text));
+	}
+}

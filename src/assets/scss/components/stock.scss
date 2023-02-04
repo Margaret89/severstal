@@ -1,0 +1,75 @@
+/*-------------- stock -----------------*/
+.stock-list{
+	&__btn{
+		text-align: center;
+		margin-top: 40px;
+	}
+}
+
+.stock-item{
+	display: flex;
+	justify-content: flex-end;
+	height: 100%;
+	background-color: #4864aa;
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: cover;
+	border-radius: 20px;
+	overflow: hidden;
+
+	&__content{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 48%;
+		padding: 80px 20px 80px 50px;
+		color: #fff;
+		position: relative;
+		z-index: 1;
+
+		&::before{
+			content: '';
+			display: block;
+			width: 430px;
+			height: 430px;
+			border-radius: 50%;
+			background: linear-gradient(217.21deg, #77EF6E 3.37%, #B4F759 3.38%, #70E777 11.86%, #35D5A5 30.57%, #00C7C5 41.07%, #2D9BE0 55.5%, #5277F7 68.65%, #5B75F6 75.85%, #3B73B5 87.49%, #4C5FA5 93.94%), #D9D9D9;
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			z-index: -1;
+		}
+	}
+
+	&__title{
+		@include font(none, bold, 2.4rem, 1.4, none);
+	}
+
+	&__text{
+		@include font(none, none, 1.6rem, 1.5, none);
+		margin-top: 16px;
+	}
+
+	&__more{
+		margin-top: 16px;
+
+		a{
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			color: #fff;
+			transition: color 0.2s ease 0s;
+
+			.icon{
+				fill: #fff;
+				transition: fill 0.2s ease 0s;
+			}
+
+			&:hover{
+				color: var(--color-green);
+				.icon{fill: var(--color-green);}
+			}
+		}
+	}
+}
