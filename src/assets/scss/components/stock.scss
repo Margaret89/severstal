@@ -2,18 +2,18 @@
 .stock-list{
 	&__btn{
 		text-align: center;
-		margin-top: 40px;
 	}
 }
 
 .stock-item{
 	display: flex;
 	justify-content: flex-end;
-	height: 100%;
+	height: calc(100% - 40px);
 	background-color: #4864aa;
 	border-radius: 20px;
 	overflow: hidden;
 	position: relative;
+	margin-bottom: 40px;
 
 	&__img{
 		width: 100%;
@@ -31,7 +31,8 @@
 		flex-direction: column;
 		justify-content: center;
 		width: 48%;
-		padding: 80px 20px 80px 50px;
+		min-height: 298px;
+		padding: 20px 20px 20px 50px;
 		color: #fff;
 		position: relative;
 		z-index: 1;
@@ -83,6 +84,12 @@
 	}
 }
 
+@media (max-width: 1639px) {
+	.stock-item{
+		&__content{width: 60%;}
+	}
+}
+
 @media (max-width: 1239px) {
 	.stock-item{
 		&__content{width: 58%;}
@@ -90,8 +97,10 @@
 }
 
 @media (max-width: 991px) {
-	.stock-list{
-		.row.gap{gap: 30px;}
+	.stock-main{
+		.stock-list{
+			.row{gap: 30px;}
+		}
 	}
 
 	.stock-item{
@@ -100,28 +109,38 @@
 }
 
 @media (max-width: 767px) {
-	.stock-list{
-		.row.gap{
-			flex-wrap: nowrap;
-			gap: 16px;
-			margin-left: -30px;
-			margin-right: -30px;
-			padding-left: 30px;
-			padding-right: 30px;
-			overflow-x: auto;
+	.stock-main{
+		.stock-list{
+			.row{
+				flex-wrap: nowrap;
+				gap: 16px;
+				margin-left: -30px;
+				margin-right: -30px;
+				padding-left: 30px;
+				padding-right: 30px;
+				overflow-x: auto;
+	
+				[class^=col-]{
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
 
-			[class^=col-]{
-				padding-left: 0;
-				padding-right: 0;
+			.stock-item{
+				display: flex;
+				flex-direction: column;
+				height: calc(100% - 26px);
+
+				&__content{height: 100%;}
 			}
 		}
-
-		&__btn{margin-top: 28px;}
 	}
 
 	.stock-item{
 		display: block;
+		height: auto;
 		border-radius: 10px;
+		margin-bottom: 26px;
 
 		&__img{
 			height: auto;
@@ -131,6 +150,7 @@
 
 		&__content{
 			width: auto;
+			min-height: 0;
 			background: linear-gradient(212.25deg, #77EF6E -15.52%, #B4F759 -15.51%, #70E777 -1.72%, #35D5A5 28.73%, #00C7C5 45.81%, #2D9BE0 69.27%, #5277F7 90.68%, #5B75F6 102.38%, #3B73B5 121.32%, #4C5FA5 131.8%), #D9D9D9;
 			padding: 18px 20px 28px;
 

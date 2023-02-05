@@ -1,0 +1,30 @@
+section.mark-wrap.mt-indent.p-indent.last-elem
+	.container
+		.row
+			.col-12
+				h2.h1 Рейтинг компании
+
+				.mark-wrap__content
+					.mark-wrap__label Нас оценили!
+
+					.mark-wrap__list
+						-
+							var list=[
+								{logo:'ya.jpg', num:'4.7', text:'Оценок : 10', width:'80'},
+								{logo:'zoon.png', num:'4.7', text:'Оценок : 10', width:'80'},
+								{logo:'yahoo.jpg', num:'5.0', text:'Оценок : 10', width:'100'},
+							]
+
+						each item in list
+							.mark
+								.mark__icon
+									img(src="assets/img/"+item.logo, alt="")
+
+								.mark__content
+									.mark__rating
+										.mark__num= item.num 
+
+										.rating
+											.rating__content(style="width:"+item.width+"%")
+
+									.mark__text= item.text

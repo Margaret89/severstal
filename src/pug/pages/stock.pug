@@ -1,0 +1,52 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Акции';
+	- var h1 = 'Акции';
+
+block breadcrumb
+	-
+		var breadcrumbs=[
+			{href:'/',name:'Главная'},
+			{href:'#',name:'Акции'},
+		];
+
+	+breadcrumbs(breadcrumbs)
+
+block content
+	section.mb-indent
+		.stock-list
+			.container
+				.row
+					-
+						var list=[
+							{img:'stock1.jpg', title:'Кредит по ставке 12% ', text:'На любые цели, без поручителей. Деньги на руки за 5 минут!'},
+							{img:'stock2.jpg', title:'Понижение ставки на кредиты для бизнеса'},
+							{img:'stock3.jpg', title:'15% россиян никогда не брали займы в МФО и кредиты', text:'На любые цели, без поручителей. Деньги на руки за 5 минут!'},
+							{img:'stock4.jpg', title:'Пользователи стали чаще обращаться в МФО посредством мобильных приложений'},
+							{img:'stock2.jpg', title:'Понижение ставки на кредиты для бизнеса'},
+							{img:'stock5.jpg', title:'Что делать, если не одобряют заем даже в МФО? На любые цели, без поручителей. Деньги на руки за 5 минут!'},
+							{img:'stock1.jpg', title:'Кредит по ставке 12% ', text:'На любые цели, без поручителей. Деньги на руки за 5 минут!'},
+							{img:'stock3.jpg', title:'15% россиян никогда не брали займы в МФО и кредиты', text:'На любые цели, без поручителей. Деньги на руки за 5 минут!'},
+						]
+					each item in list
+						.col-lg-6
+							.stock-item
+								.stock-item__img(style="background-image: url(/assets/img/"+item.img+")")
+								
+								.stock-item__content
+									.stock-item__title= item.title
+
+									if(item.text)
+										.stock-item__text= item.text
+
+									.stock-item__more
+										a(href="#") Подробнее
+											+svg('ic-arrow-right','ic-arrow-right', '14', '11')
+
+				.row
+					.col-12
+						.stock-list__btn
+							a(href="#").btn Показать еще
+
+	include ../components/rating
