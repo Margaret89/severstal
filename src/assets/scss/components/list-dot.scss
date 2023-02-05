@@ -3,7 +3,6 @@
 	list-style: none;
 
 	li{padding-left: 18px;}
-	li:not(:last-child){margin-bottom: 10px;}
 
 	li::before{
 		content: '';
@@ -15,11 +14,5 @@
 		background: var(--color-primary);
 		margin-right: 12px;
 		margin-left: -18px;
-	}
-}
-
-@media (max-width: 767px) {
-	.list-dot{
-		li:not(:last-child){margin-bottom: 6px;}
 	}
 }

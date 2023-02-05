@@ -84,6 +84,19 @@
 	}
 }
 
+.stock-detail{
+	&__img{
+		img{border-radius: 20px;}
+		margin-bottom: 80px;
+	}
+
+	&__btn{
+		display: flex;
+		justify-content: center;
+		margin-top: 40px;
+	}
+}
+
 @media (max-width: 1639px) {
 	.stock-item{
 		&__content{width: 60%;}
