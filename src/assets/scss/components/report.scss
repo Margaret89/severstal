@@ -1,0 +1,55 @@
+/*-------------- report -----------------*/
+.report{
+	.table-site{
+		td:first-child{width: 25.5%;}
+	}
+}
+
+@media (max-width: 1239px) {
+	.report{
+		.table-site{
+			td:first-child{width: 40%;}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.report{
+		.table-site{
+			&,
+			tr,
+			td{
+				display: block;
+			}
+
+			line-height: 1.25;
+
+			th,td{
+				border: none;
+				padding: 8px 15px;
+			}
+
+			tr{
+				border: 1px solid var(--color-border);
+				margin-top: -1px;
+				padding: 20px 0;
+			}
+
+			td:first-child{
+				width: 100%;
+				position: relative;
+
+				&::after{
+					content: '';
+					display: block;
+					width: 24px;
+					height: 1px;
+					background: var(--color-border);
+					position: absolute;
+					bottom: 0;
+					left: 15px;
+				}
+			}
+		}
+	}
+}
