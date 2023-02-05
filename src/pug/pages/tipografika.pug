@@ -135,6 +135,27 @@ block content
 
 				br
 				br
+				br
+				.h2 Табуляция
+				.tabs-page.js-tabs-page
+					ul.tabs-page__list.js-tabs-page-list
+						li.tabs-page__item.js-tabs-page-item(data-item='tab1', data-id='0') Tab1
+						li.tabs-page__item.js-tabs-page-item(data-item='tab2', data-id='1') Tab2
+						li.tabs-page__item.js-tabs-page-item(data-item='tab3', data-id='2') Tab3
+						li.tabs-page__item.js-tabs-page-item(data-item='tab4', data-id='3') Tab4
+					.tabs-page__content.js-tabs-page-content
+						#tab1.tabs-page__content-item.js-tabs-page-content-item.js-tabs-page-content-item
+							| Первый контент
+						#tab2.tabs-page__content-item.js-tabs-page-content-item.js-tabs-page-content-item
+							| Второй контент
+						#tab3.tabs-page__content-item.js-tabs-page-content-item.js-tabs-page-content-item
+							| Третий контент
+						#tab4.tabs-page__content-item.js-tabs-page-content-item.js-tabs-page-content-item
+							| Четвёртый контент
+
+
+				br
+				br
 				div.h2 Иконки
 				.type-icon
 					.type-icon__item
@@ -207,4 +228,9 @@ block content
 						.type-icon__img
 							+svg('ic-arrow-right','ic-arrow-right', '14', '11')
 						.type-icon__name ic-arrow-right
+
+					.type-icon__item
+						.type-icon__img
+							+svg('ic-doc','ic-doc', '13', '17')
+						.type-icon__name ic-doc
 					

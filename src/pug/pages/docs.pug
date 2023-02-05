@@ -1,0 +1,67 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Документы';
+	- var h1 = 'Документы';
+
+block breadcrumb
+	-
+		var breadcrumbs=[
+			{href:'/',name:'Главная'},
+			{href:'#',name:'Документы'},
+		];
+
+	+breadcrumbs(breadcrumbs)
+
+block content
+	section.mb-indent
+		.container
+			.row
+				.col-12
+					.tabs-page.js-tabs-page
+						ul.tabs-page__list.js-tabs-page-list
+							li.tabs-page__item.js-tabs-page-item(data-item='actual', data-id='0') Актуальное
+							li.tabs-page__item.js-tabs-page-item(data-item='archive', data-id='1') Архив
+
+						.tabs-page__content.js-tabs-page-content
+							#actual.tabs-page__content-item.js-tabs-page-content-item.js-tabs-page-content-item
+								-
+									var list=[
+										{title:'Общие условия договора онлайн займа от 24 12 2021 ООО МКК Ростфнанс', size:'191.04 Кб'},
+										{title:'Общие условия договора онлайн займа от 24 12 2021 ООО МКК Ростфнанс', size:'191.04 Кб'},
+										{title:'Общие условия договора онлайн займа от 24 12 2021 ООО МКК Ростфнанс', size:'191.04 Кб'},
+										{title:'Общие условия договора онлайн займа от 24 12 2021 ООО МКК Ростфнанс', size:'191.04 Кб'},
+										{title:'Общие условия договора онлайн займа от 24 12 2021 ООО МКК Ростфнанс', size:'191.04 Кб'},
+									]
+								each item in list
+									.doc-item
+										.doc-item__content
+											.doc-item__icon
+												+svg('ic-doc','ic-doc', '13', '17')
+											
+											.doc-item__info
+												.doc-item__title= item.title
+												.doc-item__size= item.size
+
+										a(href="#").btn Скачать
+
+							#archive.tabs-page__content-item.js-tabs-page-content-item.js-tabs-page-content-item
+								-
+									var list=[
+										{title:'Общие условия договора онлайн займа от 24 12 2021 ООО МКК Ростфнанс', size:'191.04 Кб'},
+										{title:'Общие условия договора онлайн займа от 24 12 2021 ООО МКК Ростфнанс', size:'191.04 Кб'},
+									]
+								each item in list
+									.doc-item
+										.doc-item__content
+											.doc-item__icon
+												+svg('ic-doc','ic-doc', '13', '17')
+											
+											.doc-item__info
+												.doc-item__title= item.title
+												.doc-item__size= item.size
+
+										a(href="#").btn Скачать
+							
+
+	include ../components/rating

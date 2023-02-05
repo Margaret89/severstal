@@ -225,3 +225,68 @@ if($('.js-branches-item').length){
 		}
 	});
 }
+
+// Табуляция
+if ($('.js-tabs-page').length) {
+	$('.js-tabs-page-list').each(function(){
+		$(this).find('.js-tabs-page-item:first').addClass("active");
+	});
+
+	$('.js-tabs-page-content').each(function(){
+		$(this).find('.js-tabs-page-content-item:first').fadeIn();
+	});
+
+	$('.js-tabs-page-left').addClass('inactive');
+
+	$('.js-tabs-page-item').on('click',function(e) {
+		e.preventDefault();
+		
+		if(window.deviceType != 'mobile'){
+			var $parent = $(this).parents('.js-tabs-page');
+			
+			$parent.find('.js-tabs-page-content-item').hide();
+			$parent.find('.js-tabs-page-item').removeClass('active');
+			
+			$(this).addClass("active");
+			$parent.find('#' + $(this).attr('data-item')).fadeIn();
+		}
+	});
+	
+	$('.js-tabs-page-right').on('click',function(e) { //перелистывание табов влево
+		var $parent = $(this).closest('.js-tabs-page');
+		var $activeItem = $parent.find('.js-tabs-page-item.active').next();
+
+		$parent.find('.js-tabs-page-left').removeClass('inactive');
+		
+		if($activeItem.length == 1){
+			$parent.find('.js-tabs-page-content-item').hide();
+			$parent.find('.js-tabs-page-item').removeClass('active');
+			
+			$activeItem.addClass("active");
+			$parent.find('#' + $activeItem.attr('data-item')).fadeIn();
+
+			if($activeItem.next().length == 0){
+				$(this).addClass('inactive');
+			}
+		}
+	});
+
+	$('.js-tabs-page-left').on('click',function(e) {//перелистывание табов вправо
+		var $parent = $(this).closest('.js-tabs-page');
+		var $activeItem = $parent.find('.js-tabs-page-item.active').prev();
+
+		$parent.find('.js-tabs-page-right').removeClass('inactive');
+		
+		if($activeItem.length == 1){
+			$parent.find('.js-tabs-page-content-item').hide();
+			$parent.find('.js-tabs-page-item').removeClass('active');
+			
+			$activeItem.addClass("active");
+			$parent.find('#' + $activeItem.attr('data-item')).fadeIn();
+
+			if($activeItem.prev().length == 0){
+				$(this).addClass('inactive');
+			}
+		}
+	});
+}

@@ -1,0 +1,46 @@
+/*-------------- tabs-page -----------------*/
+.tabs-page{
+	&__list,
+	&__item{
+		@include reset-list;
+	}
+
+	&__list{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 32px;
+	}
+
+	&__item{
+		display: inline-flex;
+		align-items: center;
+		height: 5.4rem;
+		border-radius: 2.7rem;
+		background: var(--color-primary);
+		@include font(none, none, 1.8rem, 1, #fff);
+		padding: 5px 32px;
+		transition: all 0.2s ease;
+		cursor: pointer;
+	}
+
+	&__item:hover{background: var(--color-primary-dark);}
+
+	&__item.active{
+		color: #4960a5;
+		background: #eff4ff;
+	}
+
+	&__content{padding-top: 40px;}
+	&__content-item{display: none;}
+	&__content-item.active{display: block;}
+}
+
+@media (max-width: 767px) {
+	.tabs-page{
+		&__item{
+			height: 4.6rem;
+			font-size: 1.6rem;
+			padding: 5px 28px;
+		}
+	}
+}
