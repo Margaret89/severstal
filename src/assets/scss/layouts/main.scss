@@ -245,6 +245,8 @@ button.btn{
 	border-radius: 20px;
 }
 
+.img-border{border-radius: 20px;}
+
 @media (max-width: 991px) {
 	.wrapper{padding-top: 60px;}
 	main{padding-bottom: 80px;}
@@ -346,4 +348,5 @@ button.btn{
 	}
 
 	.main-top.bg-light-blue{background: #fff;}
+	.img-border{border-radius: 10px;}
 }
