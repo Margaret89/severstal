@@ -1,0 +1,79 @@
+/*-------------- contacts -----------------*/
+.contacts{
+	border-radius: 20px;
+	overflow: hidden;
+
+	&__list{
+		display: flex;
+		flex-wrap: wrap;
+		gap: 30px;
+		padding: 60px 35px;
+	}
+
+	&__map{
+		height: 685px;
+
+		.map{height: 100%;}
+	}
+}
+
+.contacts-item{
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	width: calc(33.33% - 20px);
+	padding: 0 40px;
+	position: relative;
+
+	&:not(:last-child)::after{
+		content: '';
+		display: block;
+		width: 1px;
+		height: 100%;
+		background: var(--color-border);
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	&__icon{flex-shrink: 0;}
+
+	&__title{
+		font-size: 1.8rem;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 1239px) {
+	.contacts-item{
+		justify-content: flex-start;
+		width: calc(50% - 20px);
+		padding: 0;
+
+		&:not(:last-child)::after{display: none;}
+	}
+}
+
+@media (max-width: 991px) {
+	.contacts{
+		&__map{height: 384px;}
+	}
+
+	.contacts-item{width: 100%;}
+}
+
+@media (max-width: 767px) {
+	.contacts{
+		&__list{padding: 40px 20px;}
+	}
+
+	.contacts-item{
+		&:not(:last-child){
+			padding-bottom: 17px;
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		&__title{font-size: 1.6rem;}
+	}
+}
