@@ -1,0 +1,46 @@
+extends ../layout/main
+
+block variables
+	- var title = 'FAQ';
+	- var h1 = 'FAQ';
+
+block breadcrumb
+	-
+		var breadcrumbs=[
+			{href:'/',name:'Главная'},
+			{href:'#',name:'FAQ'},
+		];
+
+	+breadcrumbs(breadcrumbs)
+
+block content
+	section.mb-indent
+		.container
+			.row
+				.col-12
+					-
+						var list=[
+							{question:'Под какой процент ваш сервис выдает займы?', answer:'Стандартные займы – под 1%, для пенсионеров действуют льготные условия. Ставка составляет 0,6%.'},
+							{question:'Продолжат ли работать уже выданные кредитки', answer:'Текст'},
+							{question:'Что нельзя будет оплачивать кредитками Visa и Mastercard в России', answer:'Текст'},
+							{question:'Заявки обрабатываются крглосуточно Одобрение 99,9%?', answer:'custom'},
+							{question:'Могу ли я получить новый заём в тот же день, когда погасил предыдущий?', answer:'Текст'},
+							{question:'У меня плохая кредитная история. По этой причине мне откажут в выдаче займа?', answer:'Текст'},
+							{question:'Мне на данный момент 18 лет, вправе ли я оформить заём в вашей компании?', answer:'Текст'},
+							{question:'Требуется ли подтверждение дохода при оформлении займа?', answer:'Текст'},
+						]
+
+					each item in list
+						.unwrap-block.js-unwrap-block
+							.unwrap-block__head.js-unwrap-head
+								.unwrap-block__title= item.question
+								.unwrap-block__arr
+									+svg('ic-arrow-down','ic-arrow-down', '18', '11')
+
+							.unwrap-block__content.js-unwrap-content
+								if(item.answer == 'custom')
+									p Полномочия Института в качестве экспертной <a href="#">Ссылка</a> в тексте организации для проведения аккредитационной экспертизы в рамках Государственной аккредитации образовательной деятельности установлены Распоряжением Федеральной службы по надзору в сфере образования и науки №1093-06 от 11 июля 2018 года.
+								else
+									p= item.answer
+
+	include ../components/rating
