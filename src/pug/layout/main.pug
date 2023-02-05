@@ -12,9 +12,9 @@ html(lang='ru')
 		.wrapper
 			include ./header
 			main
-				block header-ban
-				block breadcrumb
-				if h1
-					+h1(h1)
+				.main-top(class=bg=='bg-light-blue'?'bg-light-blue':'')
+					block breadcrumb
+					if h1
+						+h1(h1)
 				block content
 			include ./footer

@@ -210,3 +210,18 @@ if($('.js-open-report').length){
 		$('.js-body').removeClass('no-scroll');
 	});
 }
+
+// Открыть/Закрыть отделение
+if($('.js-branches-item').length){
+	$('.js-branches-item-top').on('click',function(event){
+		event.preventDefault();
+		var $parent = $(this).parents('.js-branches-item');
+		
+		$parent.toggleClass('opened');
+		if($parent.hasClass('opened')){
+			$parent.children('.js-branches-item-content').slideDown(300);
+		}else{
+			$parent.children('.js-branches-item-content').slideUp(300);
+		}
+	});
+}
