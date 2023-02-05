@@ -188,3 +188,25 @@ if($('.js-unwrap-block').length){
 		}
 	});
 }
+
+//Открыть/Закрыть мобильное меню
+if($('.js-btn-sidebar').length){
+	$('.js-btn-sidebar').on('click', function(){
+		$(this).toggleClass('active');
+		$('.js-header-wrap').toggleClass('open');
+		$('.js-body').toggleClass('no-scroll');
+	});
+}
+
+//Открыть/Закрыть реквизиты в футере
+if($('.js-open-report').length){
+	$('.js-open-report').on('click', function(){
+		$('.js-report').addClass('open');
+		$('.js-body').addClass('no-scroll');
+	});
+
+	$('.js-close-report').on('click', function(){
+		$('.js-report').removeClass('open');
+		$('.js-body').removeClass('no-scroll');
+	});
+}

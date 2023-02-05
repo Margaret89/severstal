@@ -7,9 +7,9 @@ block content
 	section.top-block.mb-indent
 		.container.container_indent
 			.row
-				.col-4
+				.col-lg-6.col-xl-4
 					.top-block__main
-						.top-block__info.d-none.d-md-block
+						.top-block__info
 							.top-block__title Займы онлайн в&nbsp;Северодвинске
 							.top-block__text Деньги без справок и поручителей без залога и переплат
 
@@ -51,7 +51,7 @@ block content
 								.form-calc-res__btn
 									input.btn(type="submit", value="Продолжить")
 
-				.col-7.offset-1
+				.col-lg-6.col-xl-7.offset-xl-1
 					.contact
 						.map-wrap.js-map-wrap
 							.map-wrap__content.js-map-wrap-content
@@ -93,7 +93,7 @@ block content
 			.row
 				.col-12
 					.info-block
-						.info-block__title Отделения в регионе
+						.info-block__title Отделения в&nbsp;регионе
 
 						a(href="#").btn Все отделения
 
@@ -136,7 +136,7 @@ block content
 
 		.stock-list
 			.container
-				.row
+				.row.gap
 					-
 						var list=[
 							{img:'stock1.jpg', title:'Кредит по ставке 12% ', text:'На любые цели, без поручителей. Деньги на руки за 5 минут!'},
@@ -144,7 +144,9 @@ block content
 						]
 					each item in list
 						.col-lg-6
-							.stock-item(style="background-image: url(/assets/img/"+item.img+")")
+							.stock-item
+								.stock-item__img(style="background-image: url(/assets/img/"+item.img+")")
+								
 								.stock-item__content
 									.stock-item__title= item.title
 

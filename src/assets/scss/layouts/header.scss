@@ -1,13 +1,7 @@
 .header{
 	background: #fff;
 	box-shadow: 0px 0px 20px rgba(20, 123, 238, 0.4);
-	// position: relative;
-
-	// .container,
-	// .row,
-	// .col-12{
-	// 	position: static;
-	// }
+	position: relative;
 
 	&__content{
 		display: grid;
@@ -63,95 +57,140 @@
 	}
 }
 
-// @media (max-width: 1299px) {
-// 	.header-contact{
-// 		min-width: 225px;
+@media (max-width: 1639px) {
+	.header{
+		&__content{grid-template-columns: 120px auto;}
+	}
+}
 
-// 		&__text{
-// 			max-width: 400px;
-// 			white-space: normal;
-// 		}
-// 	}
-// }
+@media (max-width: 1239px) {
+	.header{
+		&__logo{grid-row: auto;}
+	}
 
-// @media (max-width: 991px) {
-// 	.header{
-// 		z-index: 10;
+	.main-menu-wrap{grid-column: span 2;}
+}
 
-// 		&__logo img{max-width: 200px;}
-// 	}
+@media (max-width: 991px) {
+	.header{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		z-index: 1000;
 
-// 	.header-mob-contact-wrap{
-// 		display: flex;
-// 		align-items: center;
-// 		padding: 0 15px;
-// 	}
+		&__wrap{
+			width: 100vw;
+			height: calc(100vh - 60px);
+			background: #fff;
+			overflow-y: auto;
+			position: fixed;
+			left: 0;
+			bottom: 100%;
+			transition: bottom 0.3s ease 0s;
+			z-index: 990;
 
-// 	.header-contact{
-// 		&__icon{margin-right: 6px;}
-// 	}
+			&.open{bottom: 0;}
+		}
 
-// 	.header-mob-contact{
-// 		&:not(:first-child){margin-left: 50px;}
+		&__content{
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0;
+		}
 
-// 		&__btn{
-// 			cursor: pointer;
+		&__top{
+			display: block;
+			border-top: 1px solid var(--color-border);
+			padding-top: 38px;
+			padding-bottom: 30px;
+		}
+	}
 
-// 			.icon{
-// 				fill: $color-blue;
-// 				transition: opacity 0.2s ease 0s;
-// 			}
-// 		}
+	.header-contact{
+		align-items: flex-start;
+		&__text{line-height: 1.375;}
+		&:not(:last-child){margin-bottom: 20px;}
+	}
 
-// 		&__btn.active .icon{opacity: 0.2;}
+	.main-menu-wrap{
+		width: 100%;
+		order: -1;
+	}
 
-// 		&__popup{
-// 			display: none;
-// 			background: #fff;
-// 			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-// 			padding: 24px 0 27px;
-// 			width: 100%;
-// 			position: absolute;
-// 			top: 100%;
-// 			left: 0;
-// 			right: 0;
-// 			margin: 0 auto;
-// 			z-index: 10;
+	.main-menu{
+		display: block;
+		padding: 30px 0 36px;
 
-// 			.header-contact{
-// 				width: 100%;
-// 				padding: 0 20px 0 0;
-// 			}
+		&__link{
+			padding-bottom: 0;
 
-// 			.header-contact:not(:last-child){margin-bottom: 27px;}
-// 		}
+			&::after{display: none;}
+		}
 
-// 		&__close{
-// 			display: inline-flex;
-// 			align-items: center;
-// 			justify-content: center;
-// 			width: 20px;
-// 			height: 20px;
-// 			position: absolute;
-// 			top: 28px;
-// 			right: 16px;
-// 			cursor: pointer;
+		&__item:not(:last-child){margin-bottom: 25px;}
+	}
 
-// 			.icon{
-// 				fill: $color-blue;
-// 				transition: all 0.2s ease 0s;
-// 			}
-// 		}
+	.mobile-header{
+		background: #fff;
+		box-shadow: 0px 0px 10px rgba(20, 123, 238, 0.4);
+		position: relative;
+		z-index: 1000;
+		
+		&__content{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 60px;
+			gap: 30px;
+			padding: 10px 0;
+		}
 
-// 		&__close:hover .icon{fill: #225da0;}
-// 	}
-// }
+		&__logo{
+			img{
+				max-width: 100px;
+				max-height: 50px;
+			}
+		}
+	}
 
-// @media (max-width: 767px) {
-// 	.header{
-// 		&__logo img{max-width: 128px;}
-// 	}
+	.mob-header-phone{
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		margin-left: auto;
+	
+		&__icon{
+			flex-shrink: 0;
+	
+			.icon{fill: var(--color-primary-dark);}
+		}
+	
+		&__content{
+			font-size: 1.6rem;
+			font-weight: bold;
+	
+			a{
+				color: var(--color-text);
+				text-decoration: none;
+				transition: color 0.2s ease 0s;
+				white-space: nowrap;
+	
+				&:hover{color: var(--color-primary-dark);}
+			}
+		}
+	}
+}
 
-// 	.header-mob-contact-wrap .ic-hamburger{margin-left: 30px;}
-// 	.header-mob-contact:not(:first-child){margin-left: 30px;}
-// }
+@media (max-width: 767px) {
+	.mobile-header{
+		&__logo{
+			img{max-width: 60px;}
+		}
+	}
+
+	.mob-header-phone{
+		&__content{font-size: 1.4rem;}
+	}
+}

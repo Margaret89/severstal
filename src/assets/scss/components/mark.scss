@@ -65,6 +65,7 @@
 	align-items: center;
 	gap: 24px;
 	background: rgba(255, 255, 255, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 	border-radius: 10px;
 	padding: 22px 28px;
 
@@ -72,6 +73,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		flex-shrink: 0;
 		width: 72px;
 		height: 72px;
 		border-radius: 50%;
@@ -115,39 +117,47 @@
 	}
 }
 
-// @media (max-width: 1239px) {
-// 	.mark-wrap{
-// 		padding: 40px 0;
-// 		background-size: cover;
-// 	}
-// }
+@media (max-width: 1639px) {
+	.mark-wrap{
+		&__content{display: block;}
+		&__label{margin-bottom: 20px;}
+	}
+}
 
-// @media (max-width: 991px) {
-// 	.mark-wrap{margin: 80px 0;}
-// }
+@media (max-width: 991px) {
+	.mark-wrap{
+		&__content{padding: 70px 40px;}
 
-// @media (max-width: 767px) {
-// 	.mark-wrap{
-// 		margin: 40px 0;
-// 		padding-top: 56px;
-// 		margin-bottom: 0;
+		&__list{
+			flex-direction: column;
+			gap: 30px;
+		}
 
-// 		.h1, h1, .h2, h2{margin-bottom: 30px;}
-// 	}
+		.mark{width: auto;}
+	}
+}
 
-// 	.mark{
-// 		height: auto;
-// 		min-height: 80px;
-// 		padding: 12px 10px 12px 5px;
-// 		margin-bottom: 20px;
+@media (max-width: 767px) {
+	.mark-wrap{
+		&__content{
+			padding: 30px 20px;
+			border-radius: 10px;
+		}
 
-// 		&__text{margin-top: 7px;}
-// 		&__icon img{max-height: 55px;}
+		&__label{display: none;}
+		&__list{gap: 17px;}
+	}
 
-// 		&__icon{
-// 			flex: 0 0 80px;
-// 			min-width: 40px;
-// 			margin-right: 10px;
-// 		}
-// 	}
-// }
+	.mark{
+		padding: 18px 16px;
+		gap: 20px;
+
+		&__icon{
+			width: 50px;
+			height: 50px;
+			padding: 10px;
+		}
+
+		&__text{margin-top: 10px;}
+	}
+}
