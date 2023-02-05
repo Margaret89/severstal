@@ -1,0 +1,53 @@
+extends ../layout/main
+
+block variables
+	- var title = 'Продукты';
+	- var h1 = 'Продукты';
+
+block breadcrumb
+	-
+		var breadcrumbs=[
+			{href:'/',name:'Главная'},
+			{href:'#',name:'Продукты'},
+		];
+
+	+breadcrumbs(breadcrumbs)
+
+block content
+	section.mb-indent
+		.products-list
+			.container
+				.row
+					-
+						var list=[
+							{img:'product1.jpg', title:'Экспресс заём', text:'Заём от 500 до 30 000 рублей по выгодной процентной ставке'},
+							{img:'product2.jpg', title:'Пенсионный заём', text:'Льготные условия кредитования пенсионеров'},
+							{img:'product3.jpg', title:'Неделя 0%', text:'Если вы хотите получить заем путем безналичного перевода и не переплачивать за его использование, ознакомьтесь с условиями данной программы.'},
+							{img:'product4.jpg', title:'День рождения в онлайне', text:'Новая выгодная программа кредитования'},
+							{img:'product5.jpg', title:'Как насчёт 500 на счёт?', text:'Расплачивайтесь дебетовой картой Клуб чемпионов на всех АЗС, парковках, автомойках и платных дорогах, получайте выгоду до 15%!'},
+							{img:'product2.jpg', title:'Пенсионный заём', text:'Льготные условия кредитования пенсионеров'},
+							{img:'product6.jpg', title:'Накопительный счет «Горизонт» cо ставкой, больше, чем у вклада!', text:'Накопительный счет «Горизонт» по ставке до 8%'},
+							{img:'product7.jpg', title:'Потребительский кредит', text:'Несколько простых шагов, чтобы взять потребительский кредит наличными на выгодных условиях с низкой процентной ставкой'},
+							{img:'product2.jpg', title:'Пенсионный заём', text:'Льготные условия кредитования пенсионеров'},
+						]
+					each item in list
+						.col-md-6.col-lg-4
+							.product-item
+								a(href="#").product-item__img-wrap
+									.product-item__img(style="background-image: url(/assets/img/"+item.img+")")
+								
+								.product-item__content
+									.product-item__title= item.title
+
+									.product-item__text= item.text
+
+									.product-item__more
+										a(href="#") Подробнее
+											+svg('ic-arrow-right','ic-arrow-right', '14', '11')
+
+				.row
+					.col-12
+						.stock-list__btn
+							a(href="#").btn Показать еще
+
+	include ../components/rating
